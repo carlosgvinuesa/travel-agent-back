@@ -7,7 +7,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost/travel-agent", {
+  .connect(process.env.DB, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
