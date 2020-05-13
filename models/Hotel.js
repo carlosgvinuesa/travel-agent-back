@@ -7,7 +7,7 @@ const hotelShema = new Schema(
       type: String,
       required: [true, "You need to add a name"],
       validate: {
-        message: "This email is already used",
+        message: "This hotel already exists",
         validator: async (name) => {
           const items = await models["Hotel"].count({ name });
           return items < 1;

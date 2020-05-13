@@ -7,7 +7,7 @@ const restaurantShema = new Schema(
       type: String,
       required: [true, "You need to add a name"],
       validate: {
-        message: "This email is already used",
+        message: "This restaurant already exists",
         validator: async (name) => {
           const items = await models["Restaurant"].count({ name });
           return items < 1;
@@ -32,7 +32,6 @@ const restaurantShema = new Schema(
     },
     price: {
       type: Number,
-      required: [true, "You need to add a price"],
     },
     discount: {
       type: Number,
