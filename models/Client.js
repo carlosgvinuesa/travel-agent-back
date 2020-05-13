@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
-const userSchema = new Schema(
+const clientShema = new Schema(
   {
     name: {
       type: String,
@@ -17,7 +17,7 @@ const userSchema = new Schema(
       validate: {
         message: "This email is already used",
         validator: async (email) => {
-          const items = await mongoose.models["User"].count({ email });
+          const items = await models["Client"].count({ email });
           return items < 1;
         },
       },
@@ -26,13 +26,15 @@ const userSchema = new Schema(
       type: String,
       required: [true, "You need to add a password"],
     },
-    role: {
-      type: String,
-      enum: ["ADMIN", "USER"],
-      default: "USER",
+    reservations: {
+      type: [Schema.Types.ObjectId],
+      ref: "Reservation",
     },
+    comments: {
+      type: String,
+    }
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = model("Client", clientShema);
