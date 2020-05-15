@@ -1,44 +1,45 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const Hotel = require("../models/Hotel");
 
-// GET users
+// Get hotels
 router.get("/", (req, res) => {
-  User.find()
-    .then((users) => {
+  Hotel.find()
+    .then((hotels) => {
       res.status(200).json({
-        result: users,
+        result: hotels,
       });
     })
     .catch((err) => res.status(400).json(err));
 });
 
-// Create user
+// Create hotel
 router.post("/", (req, res) => {
-  User.create(req.body)
-    .then((user) => {
-      res.status(201).json({ result: user });
+  Hotel.create(req.body)
+    .then((hotel) => {
+      res.status(201).json({ result: hotel });
     })
     .catch((err) => res.status(400).json(err));
 });
 
-// Edit user
+// Edit hotel
 router.patch("/:id", (req, res) => {
   const { id } = req.params;
-  User.findByIdAndUpdate(id, req.body, { new: true })
-    .then((user) => {
-      res.status(200).json({ result: user });
+  Hotel.findByIdAndUpdate(id, req.body, { new: true })
+    .then((hotel) => {
+      res.status(200).json({ result: hotel });
     })
     .catch((err) => res.status(400).json(err));
 });
 
-// Delete client
+// Delete hotel
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
-  User.findOneAndDelete(id)
-    .then((user) => {
-      res.status(200).json({ result: user });
+  Hotel.findOneAndDelete(id)
+    .then((hotel) => {
+      res.status(200).json({ result: hotel });
     })
     .catch((err) => res.status(400).json(err));
 });
+
 module.exports = router;

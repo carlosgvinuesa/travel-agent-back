@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { Schema, model } = mongoose;
+const { Schema, model, models } = mongoose;
 
-const hotelShema = new Schema(
+const hotelSchema = new Schema(
   {
     name: {
       type: String,
@@ -34,6 +34,9 @@ const hotelShema = new Schema(
     description: {
       type: String,
     },
+    images: {
+      type: [String],
+    },
     phone: {
       type: [String],
     },
@@ -47,4 +50,4 @@ const hotelShema = new Schema(
   { timestamps: true }
 );
 
-module.exports = model("Hotel", hotelShema);
+module.exports = model("Hotel", hotelSchema);

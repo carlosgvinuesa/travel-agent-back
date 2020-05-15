@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema, model } = mongoose;
+const { Schema, model, models } = mongoose;
 
 const clientSchema = new Schema(
   {
@@ -26,13 +26,9 @@ const clientSchema = new Schema(
       type: String,
       required: [true, "You need to add a password"],
     },
-    reservations: {
-      type: [Schema.Types.ObjectId],
-      ref: "Reservation",
-    },
     comments: {
-      type: String, 
-    }
+      type: String,
+    },
   },
   { timestamps: true }
 );
