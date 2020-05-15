@@ -30,10 +30,17 @@ const usersRouter = require("./routes/users");
 const clientsRouter = require("./routes/clients");
 const hotelsRouter = require("./routes/hotels");
 const restaurantsRouter = require("./routes/restaurants");
+const experiencesRouter = require("./routes/experiences");
+const inquiriesRouter = require("./routes/inquiries");
+const transportsRouter = require("./routes/transports");
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/clients", clientsRouter);
 app.use("/hotels", hotelsRouter);
 app.use("/restaurants", restaurantsRouter);
+app.use("/experiences", experiencesRouter);
+app.use("/inquiries", inquiriesRouter);
+app.use("/transports", transportsRouter);
+
 
 module.exports = app;

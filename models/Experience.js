@@ -1,48 +1,50 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const experienceScheme = new Schema(
+const experienceSchema = new Schema(
     {
         name: {
             type: String,
-            required: [true, "Debes agregar el nombre de la experiencia"],
+            required: [true, "You need to add the experience name"],
+            validator: async (email) => {
+                const items = await models["Experience"].count({ email });
+                return items < 1;
+            }
         },
         address: {
             type: String,
-            required: [true, "Debes agregar la dirección"],
+            required: [true, "You need to add the address"],
         },
         city: {
             type: String,
-            required: [true, "Debes agregar la dirección"],
+            required: [true, "You need to add the city"],
         },
         type: {
             type: [String],
-            required: [true, "Debes agregar como minimo un tipo de actividad"],
-        }, 
+            required: [true, "You need to add at the type"],
+        },
         interests: {
             type: [String],
-            required: [true, "Debes agregar como minimo un tipo de interes"],
-        }, 
+            required: [true, "You need to add interests related"],
+        },
         price: {
-            type: Number, 
-            required: [true, "Debes agregar el precio de la experiencia"],
-        }, 
-        description: {
-            type: [String],
-            required: [true, "Debes agregar una descripción de la experiencia"],
-        }, 
-        phoneNumber: {
             type: Number,
-            required: [true, "Debes agregar el número de telefono"],
-        }, 
+            required: [true, "You need to add the price"],
+        },
+        description: {
+            type: String,
+            required: [true, "You need to add the description"],
+        },
+        phone_number: {
+            type: [String],
+        },
         contacts: {
             type: [String],
-        }, 
+        },
         comments: {
-            type: [String],
+            type: String,
         }
     }
-
 )
 
-module.exports = mongoose.model("Experience", experienceScheme);
+module.exports = mongoose.model("Experience", experienceSchema);
