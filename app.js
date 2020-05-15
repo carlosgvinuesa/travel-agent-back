@@ -27,7 +27,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const clientsRouter = require("./routes/clients");
+const hotelsRouter = require("./routes/hotels");
+const restaurantsRouter = require("./routes/restaurants");
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/clients", clientsRouter);
+app.use("/hotels", hotelsRouter);
+app.use("/restaurants", restaurantsRouter);
 
 module.exports = app;
