@@ -5,7 +5,7 @@ const hotelSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "You need to add a name"],
+      required: [true, "Name must be added"],
       validate: {
         message: "This hotel already exists",
         validator: async (name) => {
@@ -19,7 +19,7 @@ const hotelSchema = new Schema(
     },
     city: {
       type: String,
-      required: [true, "You need to add a city"],
+      required: [true, "City must be added"],
     },
     types: {
       type: [String],
@@ -29,7 +29,7 @@ const hotelSchema = new Schema(
     },
     price: {
       type: Number,
-      required: [true, "You need to add a price"],
+      required: [true, "Price must be added"],
     },
     description: {
       type: String,

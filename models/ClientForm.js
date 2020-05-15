@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const clientFormSchema = new Schema (
     {
         client: {
             type: Schema.Types.ObjectId, 
-            ref: "User",
+            ref: "Client",
         }, 
         number_of_guests: {
             type: Number, 
@@ -31,4 +31,4 @@ const clientFormSchema = new Schema (
     }
 )
 
-module.exports = mongoose.model("ClientForm", clientFormSchema);
+module.exports = model("ClientForm", clientFormSchema);

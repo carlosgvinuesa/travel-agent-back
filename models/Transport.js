@@ -1,25 +1,25 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const transportSchema = new Schema (
     {
         route: {
             type: String, 
-            required: [true, "You need to add the route"],
+            required: [true, "The route must be added"],
         }, 
         servie_type: {
             type: String, 
             enum: ["luxury", "standard"],
-            required: [true, "You need to specify the sercive type"],
+            required: [true, "Sercive type must be specified"],
         }, 
         vehicle_type: {
             type: String, 
             enum: ["van", "wagon", "car"],
-            required: [true, "You need to specify the vehicle type"],
+            required: [true, "Vehicle type must be specified"],
         },
         price: {
             type: Number, 
-            required: [true, "You need to add the price"],
+            required: [true, "Price must be added"],
         }, 
         description: {
             type: String,
@@ -30,4 +30,4 @@ const transportSchema = new Schema (
     }
 )
 
-module.exports = mongoose.model("Transport", transportSchema);
+module.exports = model("Transport", transportSchema);
