@@ -5,17 +5,17 @@ const clientSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "You need to add a name"],
+      required: [true, "Name must be added"],
     },
     last_name: {
       type: String,
-      required: [true, "You need to add a last name"],
+      required: [true, "Last name must be added"],
     },
     email: {
       type: String,
-      required: [true, "You need to add an email"],
+      required: [true, "Email must be added"],
       validate: {
-        message: "This email is already used",
+        message: "This email is already is use",
         validator: async (email) => {
           const items = await models["Client"].count({ email });
           return items < 1;
@@ -24,7 +24,7 @@ const clientSchema = new Schema(
     },
     password: {
       type: String,
-      required: [true, "You need to add a password"],
+      required: [true, "A password must be added"],
     },
     comments: {
       type: String,

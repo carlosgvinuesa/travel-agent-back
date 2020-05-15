@@ -20,4 +20,24 @@ router.post("/", (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+//Update experience
+router.patch("/:id", (req, res) => {
+  const { id } = req.params;
+  Experience.findByIdAndUpdate(id, req.body, { new: true })
+    .then(experience => {
+      res.status(200).json({ result: experience });
+    })
+    .catch((err) => res.status(400).json(err));
+});
+
+//Delete experience
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  Experience.findByIdAndRemove(id)
+    .then((experience) => {
+      res.status(200).json({ result: experience });
+    })
+    .catch((err) => res.status(400).json(err));
+});
+
 module.exports = router;

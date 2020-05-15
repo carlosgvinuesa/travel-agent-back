@@ -1,39 +1,39 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const { Schema, model, models } = mongoose;
 
 const experienceSchema = new Schema(
     {
         name: {
             type: String,
-            required: [true, "You need to add the experience name"],
-            validator: async (email) => {
-                const items = await models["Experience"].count({ email });
+            required: [true, "Experience name must be added"],
+            validator: async (name) => {
+                const items = await models["Experience"].count({ name });
                 return items < 1;
             }
         },
         address: {
             type: String,
-            required: [true, "You need to add the address"],
+            required: [true, "Experience address must be added"],
         },
         city: {
             type: String,
-            required: [true, "You need to add the city"],
+            required: [true, "City for the experience must be added"],
         },
         type: {
             type: [String],
-            required: [true, "You need to add at the type"],
+            required: [true, "Experience type must be added"],
         },
         interests: {
             type: [String],
-            required: [true, "You need to add interests related"],
+            required: [true, "Interests related to this experience must be added"],
         },
         price: {
             type: Number,
-            required: [true, "You need to add the price"],
+            required: [true, "Experience price must be added"],
         },
         description: {
             type: String,
-            required: [true, "You need to add the description"],
+            required: [true, "A description for this experience must be added"],
         },
         phone_numbers: {
             type: [String],
@@ -47,4 +47,4 @@ const experienceSchema = new Schema(
     }
 )
 
-module.exports = mongoose.model("Experience", experienceSchema);
+module.exports = model("Experience", experienceSchema);
