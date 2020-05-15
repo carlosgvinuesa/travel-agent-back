@@ -27,7 +27,13 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const experiencesRouter = require("./routes/experiences");
+const inquiriesRouter = require("./routes/inquiries");
+const transportsRouter = require("./routes/transports");
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/experiences", experiencesRouter);
+app.use("/inquiries", inquiriesRouter);
+app.use("/transports", transportsRouter);
 
 module.exports = app;

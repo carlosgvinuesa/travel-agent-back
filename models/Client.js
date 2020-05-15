@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const clientShema = new Schema(
+const clientSchema = new Schema(
   {
     name: {
       type: String,
@@ -31,10 +31,10 @@ const clientShema = new Schema(
       ref: "Reservation",
     },
     comments: {
-      type: String,
+      type: String, 
     }
   },
   { timestamps: true }
 );
 
-module.exports = model("Client", clientShema);
+module.exports = model("Client", clientSchema);

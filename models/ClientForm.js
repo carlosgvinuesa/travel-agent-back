@@ -1,22 +1,23 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const clientFormScheme = new Schema (
+const clientFormSchema = new Schema (
     {
         client: {
-            type: Schema.Types.ObjectId
+            type: Schema.Types.ObjectId, 
+            ref: "User",
         }, 
-        numberOfGuests: {
+        number_of_guests: {
             type: Number, 
-            required: [true, "Por favor agrega el número de personas que viajaran"]
+            required: [true, "Number of guests must be added"]
         }, 
-        initialDate: {
+        initial_date: {
             type: Date, 
-            required: [true, "Por favor indica la fecha de inicio del viaje"],
+            required: [true, "Start date must be specified"],
         }, 
-        finalDate: {
+        final_date: {
             type: Date, 
-            required: [true, "Por favor indica la fecha final del viaje"],
+            required: [true, "Final date must be specified"],
         }, 
         interests: {
             type: [String],
@@ -30,4 +31,4 @@ const clientFormScheme = new Schema (
     }
 )
 
-module.exports = mongoose.model("ClientForm", clientFormScheme);
+module.exports = mongoose.model("ClientForm", clientFormSchema);
