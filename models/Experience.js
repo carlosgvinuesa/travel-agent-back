@@ -35,7 +35,7 @@ const experienceSchema = new Schema(
             type: String,
             required: [true, "You need to add the description"],
         },
-        phone_number: {
+        phone_numbers: {
             type: [String],
         },
         contacts: {

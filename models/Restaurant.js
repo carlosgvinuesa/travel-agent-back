@@ -39,7 +39,7 @@ const restaurantSchema = new Schema(
     description: {
       type: String,
     },
-    phone: {
+    phone_numbers: {
       type: [String],
     },
     contacts: {

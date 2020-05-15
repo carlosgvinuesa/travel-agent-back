@@ -37,7 +37,7 @@ const hotelSchema = new Schema(
     images: {
       type: [String],
     },
-    phone: {
+    phone_numbers: {
       type: [String],
     },
     contacts: {
