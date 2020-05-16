@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const User = require("../models/User/user");
+const User = require("../models/User");
 
 /* GET users */
 router.get("/", (req, res) => {
-  res.json({ message: "todo funciona chido" })
+  res.json({ message: "todo funciona chido" });
 });
 
 router.post("/", (req, res) => {
@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     .then((user) => {
       res.status(201).json({ result: user });
     })
-    .catch(err => res.status(400).json(err));
+    .catch((err) => res.status(400).json(err));
 });
 
 module.exports = router;
