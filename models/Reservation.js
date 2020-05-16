@@ -63,12 +63,3 @@ const reservationSchema = new Schema(
 );
 
 module.exports = model("Reservation", reservationSchema);
-
-
-
-
-
-hotel_type	[4 star, 5 star, villa, boutique, trendy, traditional, resort]
-schedule	[{day, city, hotel, restaurants, experiences, transports, cost}]
-
-comments	String

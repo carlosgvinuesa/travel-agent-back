@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Reservation = require("../models/Reservation");
+const { verToken } = require("../utils/auth")
 
 // Get list of all reservations
-router.get("/", (req, res) => {
+router.get("/", verToken, (req, res) => {
     Reservation.find()
         .populate("client", "name last_name email")
         .populate("user", "name last_name email")
@@ -15,14 +16,14 @@ router.get("/", (req, res) => {
 
 // Get all reservations by client
 router.get("/clients/:client_id", (req, res) => {
-  const { client_id } = req.params;
-  Reservation.find({ client: client_id })
-    .populate("client", "name last_name email")
-    .populate("user", "name last_name email")
-    .then((reservations) => {
-      res.status(200).json({ result: reservations });
-    })
-    .catch((err) => res.status(400).json(err));
+    const { client_id } = req.params;
+    Reservation.find({ client: client_id })
+        .populate("client", "name last_name email")
+        .populate("user", "name last_name email")
+        .then((reservations) => {
+            res.status(200).json({ result: reservations });
+        })
+        .catch((err) => res.status(400).json(err));
 });
 
 
