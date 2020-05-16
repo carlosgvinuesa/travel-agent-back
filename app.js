@@ -5,6 +5,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 mongoose
   .connect(process.env.DB, {
@@ -18,6 +19,13 @@ mongoose
   .catch((err) => console.log("error connecting to Mongo", err));
 
 const app = express();
+
+app.use(
+  cors({
+    origin: ["http://localhost:3001", "https://alambic.herokuapp.com/"],
+    redentials: true,
+  })
+);
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -35,15 +43,19 @@ const inquiriesRouter = require("./routes/inquiries");
 const transportsRouter = require("./routes/transports");
 const reservationsRouter = require("./routes/reservations");
 const authRouter = require("./routes/auth");
-app.use("/", indexRouter);
-app.use("/", authRouter);
-app.use("/users", usersRouter);
-app.use("/clients", clientsRouter);
-app.use("/hotels", hotelsRouter);
-app.use("/restaurants", restaurantsRouter);
-app.use("/experiences", experiencesRouter);
-app.use("/inquiries", inquiriesRouter);
-app.use("/transports", transportsRouter);
-app.use("/reservations", reservationsRouter);
+app.use("/api/", indexRouter);
+app.use("/api/", authRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/clients", clientsRouter);
+app.use("/api/hotels", hotelsRouter);
+app.use("/api/restaurants", restaurantsRouter);
+app.use("/api/experiences", experiencesRouter);
+app.use("/api/inquiries", inquiriesRouter);
+app.use("/api/transports", transportsRouter);
+app.use("/api/reservations", reservationsRouter);
+
+app.use("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 module.exports = app;
