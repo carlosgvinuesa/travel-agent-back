@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "prebuild": "cd ../travel-agent-front && yarn build",
-    "build": "cp -r ../travel-agent-front/build/ public/"
+    "predeploy": "cd ../travel-agent-front && yarn build",
+    "deploy": "cp -r ../travel-agent-front/build/ public/"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
