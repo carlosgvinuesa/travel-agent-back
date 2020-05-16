@@ -19,6 +19,13 @@ mongoose
 
 const app = express();
 
+app.use(
+  cors({
+    origin: ["http://localhost:3001", "https://alambic.herokuapp.com/"],
+    redentials: true,
+  })
+);
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,7 +34,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/api/", indexRouter);
+app.use("/api/users", usersRouter);
+
+app.use("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 module.exports = app;
