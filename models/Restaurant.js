@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const { Schema, model } = mongoose;
+const { Schema, model, models } = mongoose;
 
-const restaurantShema = new Schema(
+const restaurantSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "You need to add a name"],
+      required: [true, "Name must be added"],
       validate: {
         message: "This restaurant already exists",
         validator: async (name) => {
@@ -19,7 +19,7 @@ const restaurantShema = new Schema(
     },
     city: {
       type: String,
-      required: [true, "You need to add a city"],
+      required: [true, "City must be added"],
     },
     types: {
       type: [String],
@@ -39,7 +39,7 @@ const restaurantShema = new Schema(
     description: {
       type: String,
     },
-    phone: {
+    phone_numbers: {
       type: [String],
     },
     contacts: {
@@ -52,4 +52,4 @@ const restaurantShema = new Schema(
   { timestamps: true }
 );
 
-module.exports = model("Restaurant", restaurantShema);
+module.exports = model("Restaurant", restaurantSchema);

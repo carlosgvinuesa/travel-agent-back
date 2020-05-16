@@ -1,21 +1,21 @@
 const mongoose = require("mongoose");
-const { Schema, model } = mongoose;
+const { Schema, model, models } = mongoose;
 
-const clientShema = new Schema(
+const clientSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "You need to add a name"],
+      required: [true, "Name must be added"],
     },
     last_name: {
       type: String,
-      required: [true, "You need to add a last name"],
+      required: [true, "Last name must be added"],
     },
     email: {
       type: String,
-      required: [true, "You need to add an email"],
+      required: [true, "Email must be added"],
       validate: {
-        message: "This email is already used",
+        message: "This email is already is use",
         validator: async (email) => {
           const items = await models["Client"].count({ email });
           return items < 1;
@@ -24,17 +24,13 @@ const clientShema = new Schema(
     },
     password: {
       type: String,
-      required: [true, "You need to add a password"],
-    },
-    reservations: {
-      type: [Schema.Types.ObjectId],
-      ref: "Reservation",
+      required: [true, "A password must be added"],
     },
     comments: {
       type: String,
-    }
+    },
   },
   { timestamps: true }
 );
 
-module.exports = model("Client", clientShema);
+module.exports = model("Client", clientSchema);
