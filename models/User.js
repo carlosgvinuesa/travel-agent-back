@@ -28,8 +28,8 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ["ADMIN", "USER"],
-      default: "USER",
+      enum: ["ADMIN", "USER", "CLIENT"],
+      default: "CLIENT",
     },
   },
   { timestamps: true }
