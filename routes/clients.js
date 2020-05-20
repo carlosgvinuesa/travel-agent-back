@@ -1,33 +1,33 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const Client = require("../models/Client");
 
-// GET users
+// Get clients
 router.get("/", (req, res) => {
-  User.find()
-    .then((users) => {
+  Client.find()
+    .then((clients) => {
       res.status(200).json({
-        result: users,
+        result: clients,
       });
     })
     .catch((err) => res.status(400).json(err));
 });
 
-// Create user
+// Create client
 router.post("/", (req, res) => {
-  User.create(req.body)
-    .then((user) => {
-      res.status(201).json({ result: user });
+  Client.create(req.body)
+    .then((client) => {
+      res.status(201).json({ result: client });
     })
-    .catch((err) => res.status(400).json(err));
+    .catch(err => res.status(400).json(err));
 });
 
-// Edit user
+// Edit client
 router.patch("/:id", (req, res) => {
   const { id } = req.params;
-  User.findByIdAndUpdate(id, req.body, { new: true })
-    .then((user) => {
-      res.status(200).json({ result: user });
+  Client.findByIdAndUpdate(id, req.body, { new: true })
+    .then((client) => {
+      res.status(200).json({ result: client });
     })
     .catch((err) => res.status(400).json(err));
 });
@@ -35,10 +35,11 @@ router.patch("/:id", (req, res) => {
 // Delete client
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
-  User.findOneAndDelete(id)
-    .then((user) => {
-      res.status(200).json({ result: user });
+  Client.findOneAndDelete(id)
+    .then((client) => {
+      res.status(200).json({ result: client });
     })
     .catch((err) => res.status(400).json(err));
 });
+
 module.exports = router;
