@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-exports.verToken = (req, res, next) => {
+exports.veryToken = (req, res, next) => {
     const { token } = req.cookies;
     jwt.verify(token, process.env.SECRET, (error, decoded) => {
         if (error) return res.status(401).json({ error });

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Reservation = require("../models/Reservation");
-const { verToken } = require("../utils/auth")
+const { veryToken } = require("../utils/auth")
 
 // Get list of all reservations
-router.get("/", verToken, (req, res) => {
+router.get("/", veryToken, (req, res) => {
     Reservation.find()
         .populate("client", "name last_name email")
         .populate("user", "name last_name email")
