@@ -3,9 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const veryToken = require("../utils/auth")
 
-router.post("/signup", veryToken, (req, res) => {
+router.post("/signup", (req, res) => {
     const { name, last_name, email, password } = req.body;
     bcrypt.hash(password, 10).then((hashedPassword) => {
         const user = { name, last_name, email, password: hashedPassword };
@@ -15,7 +14,7 @@ router.post("/signup", veryToken, (req, res) => {
     });
 });
 
-router.post("/login", veryToken,(req, res) => {
+router.post("/login",(req, res) => {
     const { email, password } = req.body;
     User.findOne({ email })
         .then((user) => {
