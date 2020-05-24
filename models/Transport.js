@@ -3,18 +3,18 @@ const { Schema, model } = mongoose;
 
 const transportSchema = new Schema (
     {
-        route: {
+        name: {
             type: String, 
             required: [true, "The route must be added"],
         }, 
-        servie_type: {
+        service_type: {
             type: String, 
-            enum: ["luxury", "standard"],
+            enum: ["Luxury", "Standard"],
             required: [true, "Sercive type must be specified"],
         }, 
         vehicle_type: {
             type: String, 
-            enum: ["van", "wagon", "car"],
+            enum: ["Van", "Wagon", "Car"],
             required: [true, "Vehicle type must be specified"],
         },
         price: {
@@ -24,6 +24,9 @@ const transportSchema = new Schema (
         description: {
             type: String,
         },
+        images: {
+            type: [String],
+          },
         comments: {
             type: String,
         }
