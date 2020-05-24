@@ -19,7 +19,7 @@ const experienceSchema = new Schema(
             type: String,
             required: [true, "City for the experience must be added"],
         },
-        type: {
+        types: {
             type: [String],
             required: [true, "Experience type must be added"],
         },
@@ -38,6 +38,9 @@ const experienceSchema = new Schema(
         phone_numbers: {
             type: [String],
         },
+        images: {
+            type: [String],
+          },
         contacts: {
             type: [String],
         },

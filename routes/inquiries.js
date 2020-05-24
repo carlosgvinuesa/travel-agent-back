@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ClientForm = require("../models/ClientForm");
+const Inquiry = require("../models/Inquiry");
 const { veryToken } = require("../utils/auth");
 
 // Get list of all inquiries

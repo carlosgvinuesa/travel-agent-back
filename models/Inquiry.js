@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
-const clientFormSchema = new Schema (
+const inquirySchema = new Schema (
     {
         client: {
             type: Schema.Types.ObjectId, 
@@ -31,4 +31,4 @@ const clientFormSchema = new Schema (
     }
 )
 
-module.exports = model("ClientForm", clientFormSchema);
+module.exports = model("Inquiry", inquirySchema);
