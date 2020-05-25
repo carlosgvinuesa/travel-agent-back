@@ -14,7 +14,7 @@ router.post("/signup", (req, res) => {
     });
 });
 
-router.post("/login",(req, res) => {
+router.post("/login", (req, res) => {
     const { email, password } = req.body;
     User.findOne({ email })
         .then((user) => {
@@ -31,6 +31,8 @@ router.post("/login",(req, res) => {
                         secure: false,
                         httpOnly: true,
                     }).json({ user: withoutPass })
+                } else {
+                    return res.status(401).json({ msg: "Incorrect password" });
                 }
             });
         })

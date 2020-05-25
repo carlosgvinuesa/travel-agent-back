@@ -14,7 +14,7 @@ const restaurantSchema = new Schema(
         },
       },
     },
-    adress: {
+    address: {
       type: String,
     },
     city: {
@@ -38,6 +38,9 @@ const restaurantSchema = new Schema(
     },
     description: {
       type: String,
+    },
+    images: {
+      type: [String],
     },
     phone_numbers: {
       type: [String],

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema, model, models } = mongoose;
+const { Schema, model } = mongoose;
 
 const clientSchema = new Schema(
   {
@@ -22,9 +22,9 @@ const clientSchema = new Schema(
         },
       },
     },
-    password: {
-      type: String,
-      required: [true, "A password must be added"],
+    client: {
+      type: Schema.Types.ObjectId, 
+      ref: "User",
     },
     comments: {
       type: String,
