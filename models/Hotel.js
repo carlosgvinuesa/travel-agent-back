@@ -14,7 +14,7 @@ const hotelSchema = new Schema(
         },
       },
     },
-    adress: {
+    address: {
       type: String,
     },
     city: {

@@ -44,7 +44,7 @@ router.delete("/:id", (req, res) => {
 
 // Search user
 router.get("/search", (req, res) => {
-  User.find(req.body)
+  User.find(req.query)
     .then((user) => {
       res.status(200).json({
         result: user,
