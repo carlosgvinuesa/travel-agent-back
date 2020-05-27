@@ -33,7 +33,7 @@ router.patch("/:id", (req, res) => {
 //Delete experience
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
-  Experience.findByIdAndRemove(id)
+  Experience.findByIdAndDelete(id)
     .then((experience) => {
       res.status(200).json({ result: experience });
     })

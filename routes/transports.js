@@ -33,7 +33,7 @@ router.patch("/:id", (req, res) => {
 //Delete transport
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
-  Transport.findByIdAndRemove(id)
+  Transport.findByIdAndDelete(id)
     .then((transport) => {
       res.status(200).json({ result: transport });
     })
