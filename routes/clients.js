@@ -5,7 +5,7 @@ const Client = require("../models/Client");
 // Get clients
 router.get("/", (req, res) => {
   Client.find()
-    .populate("client", "name last_name email")
+    .populate("user", "name last_name email")
     .then((clients) => {
       res.status(200).json({
         result: clients,
@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
 // Create client
 router.post("/", (req, res) => {
   Client.create(req.body)
+    .populate("user", "name last_name email")
     .then((client) => {
       res.status(201).json({ result: client });
     })
