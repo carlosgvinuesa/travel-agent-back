@@ -35,7 +35,7 @@ router.patch("/:id", (req, res) => {
 // Delete restaurant
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
-  Restaurant.findOneAndDelete(id)
+  Restaurant.findByIdAndDelete(id)
     .then((restaurant) => {
       res.status(200).json({ result: restaurant });
     })

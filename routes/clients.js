@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
     .then((client) => {
       res.status(201).json({ result: client });
     })
-    .catch(err => res.status(400).json(err));
+    .catch((err) => res.status(400).json(err));
 });
 
 // Edit client
@@ -37,7 +37,7 @@ router.patch("/:id", (req, res) => {
 // Delete client
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
-  Client.findOneAndDelete(id)
+  Client.findByIdAndDelete(id)
     .then((client) => {
       res.status(200).json({ result: client });
     })

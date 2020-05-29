@@ -35,7 +35,7 @@ router.patch("/:id", (req, res) => {
 // Delete client
 router.delete("/:id", (req, res) => {
   const { id } = req.params;
-  User.findOneAndDelete(id)
+  User.findByIdAndDelete(id)
     .then((user) => {
       res.status(200).json({ result: user });
     })

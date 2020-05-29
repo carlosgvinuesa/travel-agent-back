@@ -49,7 +49,7 @@ router.patch("/:id", (req, res) => {
 //Delete reservation
 router.delete("/:id", (req, res) => {
     const { id } = req.params;
-    Reservation.findByIdAndRemove(id)
+    Reservation.findByIdAndDelete(id)
         .then((reservation) => {
             res.status(200).json({ result: reservation });
         })
